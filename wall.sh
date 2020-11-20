@@ -85,7 +85,7 @@ curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/ru
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":true}'
+     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
 EOF
 cat > uam.sh << EOF
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules" \\
@@ -170,7 +170,7 @@ curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/ru
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":true}'
+     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
 EOF
 cat > uam.sh << EOF
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules" \\
