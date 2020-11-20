@@ -178,7 +178,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfd
      -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
      -H "Content-Type: application/json" \
      --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":false,"description":"test","ref":"FIL-100"}}'
-     EOF
+EOF
 
 	touch /root/cf-auto-uam/load.avg
 	chmod 500 /root/cf-auto-uam/
