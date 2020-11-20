@@ -60,7 +60,7 @@ cat > activate.sh << EOF
 #!/bin/bash
 loadavg=load.avg
 cat /proc/loadavg | colrm 6 > \$loadavg
-grep -w "[0.00-30.00]" \$loadavg > /dev/null
+grep -w "[0.00-80.00]" \$loadavg > /dev/null
 if [ \$? -eq 0 ]
 then
 exit
@@ -72,7 +72,7 @@ cat > deactivate.sh << EOF
 #!/bin/bash
 loadavg=load.avg
 cat /proc/loadavg | colrm 6 > \$loadavg
-grep -w "[0.00-10.00]" \$loadavg > /dev/null
+grep -w "[0.00-20.00]" \$loadavg > /dev/null
 if [ \$? -eq 0 ]
 then
 bash /root/cf-auto-uam/high.sh
@@ -85,14 +85,14 @@ curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/ru
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
+     --data '{id: "bf371de586714e73a472feb2057648db", paused: true, description: "test", action: "challenge",…}'
 EOF
 cat > uam.sh << EOF
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules" \\
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
+     --data '{id: "bf371de586714e73a472feb2057648db", paused: false, description: "test", action: "challenge",…}'
 EOF
 
 	touch /root/cf-auto-uam/load.avg
@@ -145,7 +145,7 @@ cat > activate.sh << EOF
 #!/bin/bash
 loadavg=load.avg
 cat /proc/loadavg | colrm 6 > \$loadavg
-grep -w "[0.00-30.00]" \$loadavg > /dev/null
+grep -w "[0.00-80.00]" \$loadavg > /dev/null
 if [ \$? -eq 0 ]
 then
 exit
@@ -157,7 +157,7 @@ cat > deactivate.sh << EOF
 #!/bin/bash
 loadavg=load.avg
 cat /proc/loadavg | colrm 6 > \$loadavg
-grep -w "[0.00-10.00]" \$loadavg > /dev/null
+grep -w "[0.00-20.00]" \$loadavg > /dev/null
 if [ \$? -eq 0 ]
 then
 bash /root/cf-auto-uam/high.sh
@@ -170,14 +170,14 @@ curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/ru
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
+     --data '{id: "bf371de586714e73a472feb2057648db", paused: true, description: "test", action: "challenge",…}'
 EOF
 cat > uam.sh << EOF
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules" \\
      -H "X-Auth-Email: $cfemail" \\
      -H "X-Auth-Key: $cfapikey" \\
      -H "Content-Type: application/json" \\
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b60","paused":false}'
+     --data '{id: "bf371de586714e73a472feb2057648db", paused: false, description: "test", action: "challenge",…}'
 EOF
 
 	touch /root/cf-auto-uam/load.avg
