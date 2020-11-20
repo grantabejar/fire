@@ -81,16 +81,16 @@ exit
 fi
 EOF
 cat > high.sh << EOF
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
-     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules/bf371de586714e73a472feb2057648db" \
+     -H "X-Auth-Email: $cfemail" \
+     -H "X-Auth-Key: $cfapikey" \
      -H "Content-Type: application/json" \
      --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":true,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":true,"description":"test","ref":"FIL-100"}}'
 EOF
 cat > uam.sh << EOF
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
-     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules/bf371de586714e73a472feb2057648db" \
+     -H "X-Auth-Email: $cfemail" \
+     -H "X-Auth-Key: $cfapikey" \
      -H "Content-Type: application/json" \
      --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":false,"description":"test","ref":"FIL-100"}}'
 EOF
@@ -166,16 +166,16 @@ exit
 fi
 EOF
 cat > high.sh << EOF
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
-     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules/bf371de586714e73a472feb2057648db" \
+     -H "X-Auth-Email: $cfemail" \
+     -H "X-Auth-Key: $cfapikey" \
      -H "Content-Type: application/json" \
      --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":true,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":true,"description":"test","ref":"FIL-100"}}'
 EOF
 cat > uam.sh << EOF
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
-     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$cfzoneid/firewall/rules/bf371de586714e73a472feb2057648db" \
+     -H "X-Auth-Email: $cfemail" \
+     -H "X-Auth-Key: $cfapikey" \
      -H "Content-Type: application/json" \
      --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":false,"description":"test","ref":"FIL-100"}}'
 EOF
