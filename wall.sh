@@ -85,14 +85,14 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfd
      -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
      -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
      -H "Content-Type: application/json" \
-     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":true,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"(ip.src ne 8.8.8.0)","paused":true,"description":"test","ref":"FIL-100"}}'
+     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":true,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":true,"description":"test","ref":"FIL-100"}}'
 EOF
 cat > uam.sh << EOF
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
      -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
      -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
      -H "Content-Type: application/json" \
-     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"(ip.src ne 8.8.8.0)","paused":false,"description":"test","ref":"FIL-100"}}'
+     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":false,"description":"test","ref":"FIL-100"}}'
 EOF
 
 	touch /root/cf-auto-uam/load.avg
@@ -167,18 +167,18 @@ fi
 EOF
 cat > high.sh << EOF
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: $cfemail" \
-     -H "X-Auth-Key: $cfapikey" \
+     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
+     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
      -H "Content-Type: application/json" \
-     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","products":["waf"],"priority":50,"paused":true,"description":"test","filter":{"id":"bf371de586714e73a472feb2057648db","expression":"(ip.src ne 8.8.8.0)","paused":true,"description":"test",}'
+     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":true,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":true,"description":"test","ref":"FIL-100"}}'
 EOF
 cat > uam.sh << EOF
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/bb317fbd091d06a981bf6dfdfb760810/firewall/rules/bf371de586714e73a472feb2057648db" \
-     -H "X-Auth-Email: $cfemail" \
-     -H "X-Auth-Key: $cfapikey" \
+     -H "X-Auth-Email: odetlourdes.soriano@gmail.com" \
+     -H "X-Auth-Key: a874ac989362efb90498647060062290bf4ec" \
      -H "Content-Type: application/json" \
-     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","products":["waf"],"priority":50,"paused":false,"description":"test","filter":{"id":"bf371de586714e73a472feb2057648db","expression":"(ip.src ne 8.8.8.0)","paused":false,"description":"test",}'
-EOF
+     --data '{"id":"bf371de586714e73a472feb2057648db","action":"challenge","paused":false,"filter":{"id":"bf371de586714e73a472feb2057648db","expression":"ip.src ne 172.16.22.155","paused":false,"description":"test","ref":"FIL-100"}}'
+     EOF
 
 	touch /root/cf-auto-uam/load.avg
 	chmod 500 /root/cf-auto-uam/
